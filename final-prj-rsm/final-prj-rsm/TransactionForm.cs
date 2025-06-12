@@ -32,6 +32,19 @@ namespace final_prj_rsm
                 cmbCategory.Items.Add(DataManager.Categories[i]);
             cmbCategory.SelectedIndex = 0;
         }
+        private void AddNewTransaction()
+        {
+            DataManager.Transactions[DataManager.TransactionCount, 0] = cmbType.Text;
+            DataManager.Transactions[DataManager.TransactionCount, 1] = txtAmount.Text;
+            DataManager.Transactions[DataManager.TransactionCount, 2] =
+                cmbType.Text == "درآمد" ? txtSource.Text : cmbCategory.Text;
+            DataManager.Transactions[DataManager.TransactionCount, 3] = dtpDate.Value.ToString("yyyy-MM-dd");
+            DataManager.Transactions[DataManager.TransactionCount, 4] = txtDescription.Text;
+            DataManager.Transactions[DataManager.TransactionCount, 5] = DataManager.ActiveUserIndex.ToString();
+            DataManager.TransactionCount++;
+
+            MessageBox.Show("!تراکنش با موفقیت اضافه شد");
+        }
         private void UpdateTransaction()
         {
             DataManager.Transactions[selectedTransactionIndex, 0] = cmbType.Text;
@@ -61,6 +74,36 @@ namespace final_prj_rsm
             lblCategory.Visible = cmbCategory.Visible = cmbType.Text == "هزینه";
         }
 
+        private bool ValidateInputs()
+        {
+            if (!decimal.TryParse(txtAmount.Text, out _))
+            {
+                MessageBox.Show("!لطفا مبلغ معتبری وارد کنید");
+                return false;
+            }
+
+            if (cmbType.Text == "درآمد" && string.IsNullOrWhiteSpace(txtSource.Text))
+            {
+                MessageBox.Show("!لطفا منبع درآمد را وارد کنید");
+                return false;
+            }
+
+            return true;
+        }
+
+        private void RefreshTransactions()
+        {
+            listTransactions.Items.Clear();
+            for (int i = 0; i < DataManager.TransactionCount; i++)
+            {
+                if (DataManager.Transactions[i, 5] == DataManager.ActiveUserIndex.ToString())
+                {
+                    listTransactions.Items.Add(
+                        $"{DataManager.Transactions[i, 0]}: {DataManager.Transactions[i, 1]} " +
+                        $"برای {DataManager.Transactions[i, 2]} در تاریخ {DataManager.Transactions[i, 3]}");
+                }
+            }
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (!ValidateInputs()) return;
@@ -136,35 +179,8 @@ namespace final_prj_rsm
             btnAdd.Text = "به‌روزرسانی";
             btnDelete.Enabled = false;
         }
-        private void RefreshTransactions()
-        {
-            listTransactions.Items.Clear();
-            for (int i = 0; i < DataManager.TransactionCount; i++)
-            {
-                if (DataManager.Transactions[i, 5] == DataManager.ActiveUserIndex.ToString())
-                {
-                    listTransactions.Items.Add(
-                        $"{DataManager.Transactions[i, 0]}: {DataManager.Transactions[i, 1]} " +
-                        $"برای {DataManager.Transactions[i, 2]} در تاریخ {DataManager.Transactions[i, 3]}");
-                }
-            }
-        }
-        private bool ValidateInputs()
-        {
-            if (!decimal.TryParse(txtAmount.Text, out _))
-            {
-                MessageBox.Show("!لطفا مبلغ معتبری وارد کنید");
-                return false;
-            }
-
-            if (cmbType.Text == "درآمد" && string.IsNullOrWhiteSpace(txtSource.Text))
-            {
-                MessageBox.Show("!لطفا منبع درآمد را وارد کنید");
-                return false;
-            }
-
-            return true;
-        }
+       
+       
         private int GetActualTransactionIndex(int listIndex)
         {
             int count = 0;
@@ -183,19 +199,7 @@ namespace final_prj_rsm
             btnAdd.Text = "افزودن";
             btnDelete.Enabled = true;
         }
-        private void AddNewTransaction()
-        {
-            DataManager.Transactions[DataManager.TransactionCount, 0] = cmbType.Text;
-            DataManager.Transactions[DataManager.TransactionCount, 1] = txtAmount.Text;
-            DataManager.Transactions[DataManager.TransactionCount, 2] =
-                cmbType.Text == "درآمد" ? txtSource.Text : cmbCategory.Text;
-            DataManager.Transactions[DataManager.TransactionCount, 3] = dtpDate.Value.ToString("yyyy-MM-dd");
-            DataManager.Transactions[DataManager.TransactionCount, 4] = txtDescription.Text;
-            DataManager.Transactions[DataManager.TransactionCount, 5] = DataManager.ActiveUserIndex.ToString();
-            DataManager.TransactionCount++;
-
-            MessageBox.Show("!تراکنش با موفقیت اضافه شد");
-        }
+       
 
         private void btnExit_Click(object sender, EventArgs e)
         {

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Computer.Kosar\\Desktop\\final prj\\final-prj-rsm\\final-prj-rsm\\final-prj-rsm.csproj": {}
+    "C:\\Users\\Computer.Kosar\\Desktop\\New folder\\final-term-prj-c-\\final-prj-rsm\\final-prj-rsm\\final-prj-rsm.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Computer.Kosar\\Desktop\\final prj\\final-prj-rsm\\final-prj-rsm\\final-prj-rsm.csproj": {
+    "C:\\Users\\Computer.Kosar\\Desktop\\New folder\\final-term-prj-c-\\final-prj-rsm\\final-prj-rsm\\final-prj-rsm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Computer.Kosar\\Desktop\\final prj\\final-prj-rsm\\final-prj-rsm\\final-prj-rsm.csproj",
+        "projectUniqueName": "C:\\Users\\Computer.Kosar\\Desktop\\New folder\\final-term-prj-c-\\final-prj-rsm\\final-prj-rsm\\final-prj-rsm.csproj",
         "projectName": "final-prj-rsm",
-        "projectPath": "C:\\Users\\Computer.Kosar\\Desktop\\final prj\\final-prj-rsm\\final-prj-rsm\\final-prj-rsm.csproj",
+        "projectPath": "C:\\Users\\Computer.Kosar\\Desktop\\New folder\\final-term-prj-c-\\final-prj-rsm\\final-prj-rsm\\final-prj-rsm.csproj",
         "packagesPath": "C:\\Users\\Computer.Kosar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Computer.Kosar\\Desktop\\final prj\\final-prj-rsm\\final-prj-rsm\\obj\\",
+        "outputPath": "C:\\Users\\Computer.Kosar\\Desktop\\New folder\\final-term-prj-c-\\final-prj-rsm\\final-prj-rsm\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
